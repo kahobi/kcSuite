@@ -12,7 +12,7 @@ function xfloorB (x)
 	qcAPI.mvNextR()
 
 	qcAPI.xBlockForward(x , NetherQ)							--Colum 5, Right Nether, Return
-	qc.ColumL()
+	qcAPI.mvNextL()
 
 	qcAPI.xBlockForward(x , NetherQ)							--Colum 6, Right Smoked, Send
 end
@@ -29,8 +29,8 @@ function xfloorC (x)
 
 	qcAPI.xConduitForward(1 , NetherF)						--Colum 5, Right Nether, Return
 	qcAPI.xBlockForawrd((x - 1) , NetherQ) 
-	qc.ColumL()
+	qcAPI.mvNextL()
 
-		qcAPI.xBlockForawrd((x - 1) , SmokedQ)				--Colum 6, Right Smoked, Send
-		qcAPI.xConduitForward(1 , SmokedF) 
+	qcAPI.xBlockForawrd((x - 1) , SmokedQ)				--Colum 6, Right Smoked, Send
+	qcAPI.xConduitForward(1 , SmokedF) 
 end

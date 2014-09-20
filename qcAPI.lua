@@ -56,19 +56,18 @@ function dTurnAway (d)			--... from start
 	end
 end
 
-function mvCol2
-	if TurtleAO < 2 then
+function mvColx (x)
+	if x < TurtleAO then
 		turtle.turnRight()
-		turtle.forward()
+		xForward(TurtleAO - x)
 		turtle.turnLeft()
 	end
-	if TurtleAO > 2 then
-	
-
-function mvCol3
-function mvCol4
-function mvCol5
-function mvCol6
+	if x > TurtleAO then
+		turtle.turnLeft()
+		xForward(math.abs(TurtleAO-x))
+		turtle.turnRight()
+	end
+end
 
 function mvNextR ()
 	turtle.forward()
