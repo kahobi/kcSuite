@@ -1,36 +1,45 @@
-dofile("QCVar.lua")
-os.loadAPI("qcAPI.lua")
+--kcAPI001.xFloorB()
+--kcAPI001.xFloorC()
+--kcAPI001.xFllor()
+function xFloorB (x)										--x = NumSect*SecDim
+	kcAPI.xBlockForward(x , SmokedQ)							--Colum 2, Left Smoked, Send
+	kcAPI.mvNextR()
 
-function xfloorB (x)
-	qcAPI.xBlockForward(x , SmokedQ)							--Colum 2, Left Smoked, Send
-	qcAPI.mvNextR()
+	kcAPI.xBlockForward(x , NetherQ)							--Colum 3, Left Nether, Return
+	kcAPI.mvNextL()
 
-	qcAPI.xBlockForward(x , NetherQ)							--Colum 3, Left Nether, Return
-	qcAPI.mvNextL()
+	kcAPI.xBlockForward(x , NetherQ)							--Colum 4, Center Nether, Send 
+	kcAPI.mvNextR()
 
-	qcAPI.xBlockForward(x , NetherQ)							--Colum 4, Center Nether, Send 
-	qcAPI.mvNextR()
+	kcAPI.xBlockForward(x , NetherQ)							--Colum 5, Right Nether, Return
+	kcAPI.mvNextL()
 
-	qcAPI.xBlockForward(x , NetherQ)							--Colum 5, Right Nether, Return
-	qcAPI.mvNextL()
-
-	qcAPI.xBlockForward(x , NetherQ)							--Colum 6, Right Smoked, Send
+	kcAPI.xBlockForward(x , NetherQ)							--Colum 6, Right Smoked, Send
 end
 
-function xfloorC (x)
-	qcAPI.xBlockForward(x , SmokedQ)							--Colum 2 - Left Smoked, Send
-	qcAPI.mvNextR()
+function xFloorC (x)													--x = NumSect*SecDim
+	kcAPI.xBlockForward(x , SmokedQ)							--Colum 2 - Left Smoked, Send
+	kcAPI.mvNextR()
 
-	qcAPI.xBlockForward(x , NetherQ)							--Colum 3, Left Nether, Return
+	kcAPI.xBlockForward(x , NetherQ)							--Colum 3, Left Nether, Return
 	qcAPI.mvNextL()
 
-	qcAPI.xConduitForward(x , NetherF)						--Colum 4, Centre Nether, Send
-	qcAPI.mvNextR()
+	kcAPI.xConduitForward(x , NetherF)							--Colum 4, Centre Nether, Send
+	kcAPI.mvNextR()
 
-	qcAPI.xConduitForward(1 , NetherF)						--Colum 5, Right Nether, Return
-	qcAPI.xBlockForawrd((x - 1) , NetherQ) 
-	qcAPI.mvNextL()
+	kcAPI.xConduitForward(1 , NetherF)							--Colum 5, Right Nether, Return
+	kcAPI.xBlockForawrd((x - 1) , NetherQ) 
+	kcAPI.mvNextL()
 
-	qcAPI.xBlockForawrd((x - 1) , SmokedQ)				--Colum 6, Right Smoked, Send
-	qcAPI.xConduitForward(1 , SmokedF) 
+	kcAPI.xBlockForawrd((x - 1) , SmokedQ)						--Colum 6, Right Smoked, Send
+	kcAPI.xConduitForward(1 , SmokedF) 
+end
+
+function xFloor (x , y)											--x = SectDim, y = Conduit true/false
+	if y = true
+		xFloorC(x)
+	end
+	if y = false
+		xFloorB(x)
+	end
 end

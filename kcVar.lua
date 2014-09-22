@@ -3,7 +3,7 @@ SectDim = 6				--7th segment in a section is shared, the start of the next.
 
 LineDis = (NumSect + SectDim)
 
-TurtleAO = 4			--Turtle starting position.  Beginning location should be centre(4) of previous section.  Should usually end at 2 or 6.
+TurtCol = 4			--Turtle starting position.  Beginning location should be centre(4) of previous section.  Should usually end at 2 or 6.
 
 EioME = true
 EioEn = true

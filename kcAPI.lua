@@ -1,20 +1,20 @@
---qcAPI.xForward()
---qcAPI.xBack()
---qcAPI.xUp()
---qcAPI.xDown()
+--kcAPI.xForward()
+--kcAPI.xBack()
+--kcAPI.xUp()
+--kcAPI.xDown()
 
---qcAPI.dTurnToNear()
---qcAPI.dTurnToFar()
+--kcAPI.dTurnTo()
+--qcAPI.dTurnFrom()
 
---qcAPI.mvNextR()
---qcAPI.mvNextL()
---qcAPI.mvToStartR()
---qcAPI.mvToStartL()
+--kcAPI.mvNextR()
+--kcAPI.mvNextL()
+--kcAPI.mvColx()
 
---qcAPI.xBlockForward()
---qcAPI.xBlockUp()
---qcAPI.xConduitForward()
---qcAPI.xConduitUp()
+--kcAPI.xBlockForward()
+--kcAPI.xBlockUp()
+--kcAPI.xConduitForward()
+--kcAPI.xConduitUp()
+--kcAPI.xIntersect()
 
 function xForward (x)
 	for i = 1 , x do
@@ -40,16 +40,16 @@ function xDown (x)
 	end
 end
 
-function dTurnToward (d)		--... start
-	if d == 2 then
+function dTurnTo ()				--... start
+	if TurtCol <= 4 then
 		turtle.turnLeft()
 	else
 		turtle.turnRight()
 	end
 end
 
-function dTurnAway (d)			--... from start
-	if d ~= 2 then
+function dTurnFrom ()			--... start
+	if TurtCol > 4 then
 		turtle.turnRight()
 	else
 		turtle.turnLeft()
@@ -57,16 +57,17 @@ function dTurnAway (d)			--... from start
 end
 
 function mvColx (x)
-	if x < TurtleAO then
+	if x < TurtCol then
 		turtle.turnRight()
-		xForward(TurtleAO - x)
+		xForward(TurtCol - x)
 		turtle.turnLeft()
 	end
-	if x > TurtleAO then
+	if x > TurtCol then
 		turtle.turnLeft()
-		xForward(math.abs(TurtleAO-x))
+		xForward(math.abs(TurtCol-x))
 		turtle.turnRight()
 	end
+	TurtCol = x
 end
 
 function mvNextR ()
@@ -74,6 +75,7 @@ function mvNextR ()
 	turtle.turnRight()
 	turtle.forward()
 	turtle.turnRight()
+	TurtCol = (TurtCol + 1)
 end
 
 function mvNextL ()
@@ -81,18 +83,7 @@ function mvNextL ()
 	turtle.turnLeft()
 	turtle.forward()
 	turtle.turnLeft()
-end
-
-function mvToStartR ()
-	turtle.turnRight()
-	xForward(TurtleAO - 2)
-	turtle.turnLeft()
-end
-
-function mvToStartL ()
-	turtle.turnLeft()
-	xForward(SectDim - TurtleAO)
-	turtle.turnRight()
+	TurtCol = (TurtCol + 1)
 end
 
 function xBlockForward (x , b)
@@ -105,6 +96,10 @@ end
 
 function xBlockUp (x , b)
 	turtle.select(b)
+	if turtle.detectDown() then
+		x = (x - 1)
+		turtle.up()
+	end
 	for i = 1 , x do
 		turtle.placeDown()
 		turtle.up()
@@ -140,6 +135,10 @@ function xConduitForward (x , b)
 end
 
 function xConduitUp (x , b)
+	if turtle.detectDown() then
+		x = (x - 1)
+		turtle.up()
+	end
 	for i = 1 , x do
 		turtle.select(b)
 		turtle.placeDown()
@@ -165,4 +164,10 @@ function xConduitUp (x , b)
 		end
 		turtle.up()
 	end
+end
+
+function xIntersect (x)				--x = SectDim
+	qcAPI.xBlockForward(1 , SmokedQ)
+	qcAPI.xBlockForward((x - 2) , NetherQ)
+	qcAPI.xblockForward(1 , SmokedQ)
 end
