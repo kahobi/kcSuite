@@ -1,7 +1,7 @@
 --kcAPI001.xFloorB()
 --kcAPI001.xFloorC()
 --kcAPI001.xFllor()
-function xFloorB (x)										--x = NumSect*SecDim
+function xFloorB (x)											--x = SectNum*SecDim
 	kcAPI.xBlockForward(x , SmokedQ)							--Colum 2, Left Smoked, Send
 	kcAPI.mvNextR()
 
@@ -17,7 +17,7 @@ function xFloorB (x)										--x = NumSect*SecDim
 	kcAPI.xBlockForward(x , NetherQ)							--Colum 6, Right Smoked, Send
 end
 
-function xFloorC (x)													--x = NumSect*SecDim
+function xFloorC (x)													--x = SectNum*SecDim
 	kcAPI.xBlockForward(x , SmokedQ)							--Colum 2 - Left Smoked, Send
 	kcAPI.mvNextR()
 
@@ -35,7 +35,7 @@ function xFloorC (x)													--x = NumSect*SecDim
 	kcAPI.xConduitForward(1 , SmokedF) 
 end
 
-function xFloor (x , y)											--x = SectDim, y = Conduit true/false
+function xFloor (x , y)											--x = SectNum, y = Conduit true/false
 	if y = true
 		xFloorC(x)
 	end
