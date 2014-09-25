@@ -87,7 +87,9 @@ function mvNextL ()
 end
 
 function xBlockForward (x , b)
-	turtle.select(b)
+	if b ~= nil then
+		turtle.select(b)
+	end
 	for i = 1, x do
 		turtle.forward()
 		turtle.placeDown()
