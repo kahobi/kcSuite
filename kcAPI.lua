@@ -58,31 +58,31 @@ end
 
 function mvColx (x)
 	if x < TurtCol then
-		turtle.turnRight()
-		xForward(TurtCol - x)
 		turtle.turnLeft()
+		xForward(TurtCol - x)
+		turtle.turnRight()
 	end
 	if x > TurtCol then
-		turtle.turnLeft()
-		xForward(math.abs(TurtCol-x))
 		turtle.turnRight()
+		xForward(math.abs(TurtCol-x))
+		turtle.turnLeft()
 	end
 	TurtCol = x
 end
 
 function mvNextR ()
-	turtle.forward()
 	turtle.turnRight()
 	turtle.forward()
 	turtle.turnRight()
+	turtle.back()
 	TurtCol = (TurtCol + 1)
 end
 
 function mvNextL ()
-	turtle.forward()
 	turtle.turnLeft()
 	turtle.forward()
 	turtle.turnLeft()
+	turtle.back()
 	TurtCol = (TurtCol + 1)
 end
 
@@ -119,7 +119,7 @@ function xConduitForward (x , b)
 			turtle.select(IOEnCon)
 			turtle.placeDown()
 		end
-		if EioFL then
+		if EioFl then
 			turtle.select(IOFlCon)
 			turtle.placeDown()
 		end
@@ -127,8 +127,8 @@ function xConduitForward (x , b)
 			turtle.select(IOItCon)
 			turtle.placeDown()
 		end
-		if EioRS then
-			turtle.select(IORECon)
+		if EioRs then
+			turtle.select(IORsCon)
 			turtle.placeDown()
 		end
 	end
@@ -159,7 +159,7 @@ function xConduitUp (x , b)
 			turtle.placeDown()
 		end
 		if EioRS then
-			turtle.select(IORECon)
+			turtle.select(IORsCon)
 			turtle.placeDown()
 		end
 		turtle.up()

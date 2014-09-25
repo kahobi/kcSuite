@@ -1,0 +1,10 @@
+Casing = 16					--Reactor Casing
+Controller = 15			--Reactor Controller
+PowerTap = 14				--Reactor Power Tap
+AccessPort = 13			--Reactor Access Port
+RGlass  = 12				--Reactor Glass
+ControlRod = 11			--Reactor Control Rod
+FuelRod = 10				--Yellorium Fuel Rod
+RedsPort = 09				--Redstone Redstone Port
+RedNetPort = 08			--Rednet Port
+ComputerPo = 07			--Computer Port

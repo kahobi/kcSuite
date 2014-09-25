@@ -10,6 +10,12 @@ LineDis = (SectNum + SectDim)
 
 TurtCol = 4			--Turtle starting position.  Beginning location should be centre(4) of previous section.  Should usually end at 2 or 6.
 
+x = 0
+y = 0
+
+No.x = 0					--number to be used as variable in functions.  eg.  xForward (No.x)
+no.y = 0
+no.z = 0
 
 --bType01 = Fuel
 --bType02 =
